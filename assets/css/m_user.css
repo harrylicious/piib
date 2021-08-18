@@ -1,0 +1,85 @@
+.bo-c {
+    background-color: rgb(72, 184, 49);
+}
+.box-1 {
+    width: 190px;
+    height: 230px;
+    border: 1px solid white;
+    border-radius: 9px;
+    float: left;
+    padding: 10px;
+}
+.box_3 {
+    float: left;
+    border-radius: 9px;
+    padding: 10px;
+    border: 1px solid white;
+}
+.box-peserta {
+    background-color: rgb(103, 52, 153);
+    margin-right: 5px;
+}
+.box_mahasiswa {
+    background-color: rgb(237, 50, 55);
+    margin-right: 5px;
+}
+.box_mentor {
+    background-color: #ffaa31;
+    margin-right: 5px;
+}
+.box_pembimbing {
+    background-color: #009ad7;
+    margin-right: 5px;
+}
+.box_informasi {
+    background-color: #44b8b4;
+    width: 385px;
+    height: 230px;
+    margin-top: 5px;
+}
+.box_ssl {
+    background-color: #33aa2f;
+    width: 190px;
+    height: 230px;
+    margin-right: 5px;
+    /* margin-top: 5px; */
+}
+.box_sula {
+    background-color: #b12b2b;
+    width: 190px;
+    height: 230px;
+    margin-right: 5px;
+}
+.box-par {
+    position: relative;
+    margin-top: 15px;
+    margin-left: 3px;
+    margin-right: 10px;
+    padding-top: 20px;
+    padding-left: 20px;
+    padding-right: 20px;   
+    color: #fff;
+}
+.h4c{    
+    position: relative;
+    margin-top: 15px;
+    margin-left: 3px;
+    margin-right: 10px;
+    margin-bottom: 15px;
+    color: #fff;
+}
+.titleus {
+    
+    font-family: Verdana;
+    font-size: 50px;
+    font-weight: bold;
+}
+
+.font-l {
+    font-family: Verdana;
+    font-size: 24px;
+    font-weight: bold;
+    clear: both;
+    color: #ffffff;
+    text-align: right
+}

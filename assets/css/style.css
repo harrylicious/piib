@@ -1,0 +1,27 @@
+/* landing */
+.circle-50-34 {
+    width: 80px;
+    height: 80px;
+    align-self: center;
+    background: linear-gradient(156.88deg, #FFC0B6 -5.73%, #FFCF75 128.91%);
+    border-radius: 40px;
+    margin-bottom: 16px;
+}
+.image-0-0-521 {
+   position: relative;
+   left: 18px;
+   top: 13px;
+}
+.centering-44 {
+    position: relative;
+    left: 80px;
+    justify-content: center;
+    align-items: center;
+}
+/* end Landing */
+
+/* dashboard */
+.navbar-vertical .navbar-brand img {
+    height:2.875rem
+}
+/* end dashboard */
