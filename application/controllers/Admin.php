@@ -26,8 +26,8 @@ class Admin extends CI_Controller {
 	public function index(){
 		if($this->session->userdata('access')=='2'){
 			$id_user=$this->session->userdata('u_id');
-			$data['judul']='Beranda admin';
-			$data['data']=$this->m_user->get_profile($id_user);
+			$data['judul']='Beranda admin - PIIB UNIVERSITAS HAMZANWADI';
+			$data['data']=$this->m_user->get_profile($id_user)->row_array();
 			$this->load->view('/templates/admin/v_header',$data);
 			$this->load->view('/home/admin/v_dashboard',$data);
 			$this->load->view('/templates/admin/v_footer',$data);
@@ -39,8 +39,8 @@ class Admin extends CI_Controller {
 	public function profile(){
 		if($this->session->userdata('access')=='2'){
 			$id_user=$this->session->userdata('u_id');
-			$data['judul']='Profil';
-			$data['data']=$this->m_user->get_profile($id_user); 
+			$data['judul']='Profil - PIIB UNIVERSITAS HAMZANWADI';
+			$data['data']=$this->m_user->get_profile($id_user)->row_array();
 			$this->load->view('/templates/admin/v_header',$data);
 			$this->load->view('/home/admin/v_profile',$data);
 			$this->load->view('/templates/admin/v_footer',$data);
@@ -52,10 +52,10 @@ class Admin extends CI_Controller {
 	public function mentor_user(){
 		if($this->session->userdata('access')=='2'){
 			$id_user=$this->session->userdata('u_id');
-			$data['judul']='Mentor';
+			$data['judul']='Mentor - PIIB UNIVERSITAS HAMZANWADI';
 			$tbl=$this->m_config->tbl_user();
 			$limit=10;
-			$data['data']=$this->m_user->get_profile($id_user);
+			$data['data']=$this->m_user->get_profile($id_user)->row_array();
 			$data['data_user']=$this->m_user->get_mentor_user($limit); 
 			$this->db->where('level', 'mentor'); 
 			$this->db->where('status', '0'); 
@@ -71,10 +71,10 @@ class Admin extends CI_Controller {
 	public function peserta_user(){
 		if($this->session->userdata('access')=='2'){
 			$id_user=$this->session->userdata('u_id');
-			$data['judul']='Peserta';
+			$data['judul']='Peserta - PIIB UNIVERSITAS HAMZANWADI';
 			$tbl=$this->m_config->tbl_peserta();
 			$limit=10;
-			$data['data']=$this->m_user->get_profile($id_user);
+			$data['data']=$this->m_user->get_profile($id_user)->row_array();
 			$data['data_user']=$this->m_peserta->get_peserta_user($limit); 
 			$this->db->where('level', 'peserta'); 
 			$this->db->where('status', '0'); 
@@ -92,9 +92,9 @@ class Admin extends CI_Controller {
 	public function mentor_user_profile($id_mentor){
 		if($this->session->userdata('access')=='2'){
 			$id_user=$this->session->userdata('u_id');
-			$data['judul']='Profil mentor';
+			$data['judul']='Profil mentor - PIIB UNIVERSITAS HAMZANWADI';
 			$tbl=$this->m_config->tbl_peserta();
-			$data['data']=$this->m_user->get_profile($id_user);
+			$data['data']=$this->m_user->get_profile($id_user)->row_array();
 			$data['data_mentor']=$this->m_user->get_mentor_user_profile($id_mentor); 
 			$this->db->where('level', 'mentor'); 
 			$data['hitung']= $this->db->count_all_results($tbl);
@@ -110,9 +110,9 @@ class Admin extends CI_Controller {
 	public function peserta_user_profile($id_peserta){
 		if($this->session->userdata('access')=='2'){
 			$id_user=$this->session->userdata('u_id');
-			$data['judul']='Profil Peserta';
+			$data['judul']='Profil Peserta - PIIB UNIVERSITAS HAMZANWADI';
 			$tbl=$this->m_config->tbl_peserta();
-			$data['data']=$this->m_user->get_profile($id_user);
+			$data['data']=$this->m_user->get_profile($id_user)->row_array();
 			$data['data_peserta']=$this->m_peserta->get_peserta_user_profile($id_peserta); 
 			$this->db->where('level', 'peserta'); 
 			$data['hitung']= $this->db->count_all_results($tbl);
@@ -387,7 +387,7 @@ class Admin extends CI_Controller {
 				'tanggal_lahir' 	=> htmlspecialchars($tanggal_lahir), 
 				'semester' 	 		=> htmlspecialchars($semester), 
 				'telpon' 	 		=> htmlspecialchars($telpon), 
-			
+
 			);
 
 			$this->m_user->update_profile($id_user,$data);
@@ -402,30 +402,41 @@ class Admin extends CI_Controller {
 		}
 	}
 
+
 	//mengganti email pengguna
 	public function change_email(){
 		if($this->session->userdata('access')=='2'){
 			$id_user=$this->session->userdata('u_id');
 			$email=$this->input->post('email');
+			$this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');
 
-			$data = array(
-				'email' => htmlspecialchars($this->input->post('email',true)),
-			);
+			if ($this->form_validation->run() == false) { 
+				
 
-			$this->m_user->update_profile($id_user,$data);
+				echo $this->session->set_tempdata('msg','<div class="alert alert-danger" role="alert">Format email salah </div>', 2);
 
-			// sesi tab
-			$this->session->set_tempdata('tab', '3', 2);
+				// sesi tab
+				$this->session->set_tempdata('tab', '3', 2);
+				redirect("admin/profile");
 
-			echo $this->session->set_tempdata('msg','<div class="alert alert-success" role="alert"> Email berhasil diubah</div>', 2);
-			redirect("admin/profile");
+			}else{ 
+				$data = array(
+					'email' => htmlspecialchars($this->input->post('email',true)),
+				);
+
+				$this->m_user->update_profile($id_user,$data);
+				// sesi tab
+				$this->session->set_tempdata('tab', '3', 2);
+				echo $this->session->set_tempdata('msg','<div class="alert alert-success" role="alert"> Email berhasil diubah</div>', 2);
+				redirect("admin/profile");
+			}
 		}else{
 			$this->load->view('/maintenance/v_error_404');
 		}
 	}
 
 
-	//mengganti password pengguna
+//mengganti password pengguna
 	public function change_password(){
 		if($this->session->userdata('access')=='2'){
 			$id_user=$this->session->userdata('u_id');
@@ -456,12 +467,18 @@ class Admin extends CI_Controller {
 				// jika password saat ini tidak sama 
 				}else{
 
+					// sesi tab
+					$this->session->set_tempdata('tab', '3', 2);
 					echo $this->session->set_tempdata('msg','<div class="alert alert-danger" role="alert"> Kata sandi saat ini salah</div>', 2);
 					redirect("admin/profile");
 				}
 
 			// jika passsword tidak sama
 			}else{
+
+				// sesi tab
+				$this->session->set_tempdata('tab', '3', 2);
+
 				echo $this->session->set_tempdata('msg','<div class="alert alert-danger" role="alert"> Kata sandi baru tidak sama</div>', 2);
 				redirect("admin/profile");
 			}/*batas password jika sama*/
@@ -471,5 +488,7 @@ class Admin extends CI_Controller {
 		}
 	}
 
+
+	
 
 } /*ini adalah batas class admin / this line is limit of Class admin*/

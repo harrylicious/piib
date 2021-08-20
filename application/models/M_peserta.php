@@ -19,9 +19,9 @@ class M_peserta extends CI_Model {
 	function get_profile($id_peserta) {
 		$tbl=$this->m_config->tbl_peserta();
 		$id=$this->m_config->id_peserta();
-		$hsl=$this->db->where($id, $id_peserta);
-		$hsl=$this->db->get($tbl);
-		return $hsl;
+		$this->db->where($id, $id_peserta);
+		return $this->db->get($tbl);
+		
 
 	}
 
@@ -30,8 +30,8 @@ class M_peserta extends CI_Model {
 		$tbl=$this->m_config->tbl_peserta();
 		$id=$this->m_config->id_peserta();
 		$this->db->where($id, $id_peserta);
-		$hsl=$this->db->update($tbl, $data);
-		return $hsl;
+		return $this->db->update($tbl, $data);
+		
 	} 
 
 	// delete foto
@@ -39,16 +39,16 @@ class M_peserta extends CI_Model {
 		$tbl=$this->m_config->tbl_peserta();
 		$id=$this->m_config->id_peserta();
 		$this->db->where($id, $id_peserta);
-		$hsl=$this->db->update($tbl, $data);
-		return $hsl;
+		return $this->db->update($tbl, $data);
+		
 	}
 
  	// tambah pengguna
 	function add_user($data){
 		$tbl=$this->m_config->tbl_peserta();
 		$id=$this->m_config->id_peserta();
-		$hsl=$this->db->insert($tbl, $data);
-		return $hsl;
+		return $this->db->insert($tbl, $data);
+		
 	} 	
 
 	// delete pengguna
@@ -56,16 +56,16 @@ class M_peserta extends CI_Model {
 		$tbl=$this->m_config->tbl_peserta();
 		$id=$this->m_config->id_peserta();
 		$this->db->where($id, $id_peserta);
-		$hsl=$this->db->update($tbl, $data);
-		return $hsl;
+		return $this->db->update($tbl, $data);
+		
 	}
  	// update profil
 	function update_profile($id_peserta, $data){
 		$tbl=$this->m_config->tbl_peserta();
 		$id=$this->m_config->id_peserta();
 		$this->db->where($id, $id_peserta);
-		$hsl=$this->db->update($tbl, $data);
-		return $hsl;
+		return $this->db->update($tbl, $data);
+		
 	}
 
 	
@@ -75,8 +75,8 @@ class M_peserta extends CI_Model {
 		$id=$this->m_config->id_peserta();
 		$this->db->set('email', $data);
 		$this->db->where($id, $id_peserta);
-		$hsl=$this->db->update($tbl);
-		return $hsl;
+		return $this->db->update($tbl);
+		
 	}
 
 	// cek_pengguna
@@ -84,9 +84,9 @@ class M_peserta extends CI_Model {
 		$tbl=$this->m_config->tbl_peserta();
 		$id=$this->m_config->id_peserta();
 		$this->db->where($id, $id_peserta);
-		$this->db->where('username', $username);
-		$hsl = $this->db->get($tbl)->row_array();
-		return $hsl;
+		$this->db->where('username', $usernamereturn );
+		return $this->db->get($tbl)->row_array();
+		
 	}
 
 	// ubah password
@@ -95,8 +95,8 @@ class M_peserta extends CI_Model {
 		$id=$this->m_config->id_peserta();
 		$this->db->set('password', $data);
 		$this->db->where($id, $id_peserta);
-		$hsl=$this->db->update($tbl);
-		return $hsl;
+		return $this->db->update($tbl);
+		
 	}
 
 
@@ -106,16 +106,16 @@ class M_peserta extends CI_Model {
 		$id=$this->m_config->id_peserta();
 		$this->db->where("status", "0");
 		$this->db->where("level", "peserta");
-		$hsl=$this->db->get($tbl, $limit);
-		return $hsl;
+		return $this->db->get($tbl, $limit);
+		
 	}	
 
 	function get_peserta_user_profile($id_peserta){
 		$tbl=$this->m_config->tbl_peserta();
 		$id=$this->m_config->id_peserta();
 		$this->db->where($id, $id_peserta); // peanggil user level mentor saja
-		$hsl=$this->db->get($tbl);
-		return $hsl;
+		return $this->db->get($tbl);
+		
 	}	
 
 // ============================================================ 
@@ -152,8 +152,8 @@ class M_peserta extends CI_Model {
 		$tbl=$this->m_config->tbl_peserta();
 		$id=$this->m_config->id_peserta();
 		$this->db->where($id, $id_peserta);
-		$hsl=$this->db->delete($tbl);
-		return $hsl;
+		return $this->db->delete($tbl);
+		
 
 	}
 
@@ -165,8 +165,8 @@ class M_peserta extends CI_Model {
 		$id=$this->m_config->id_peserta();
 		$this->db->set('status', 1);
 		$this->db->where($id, $id_peserta);
-		$hsl=$this->db->update($tbl);
-		return $hsl;
+		return $this->db->update($tbl);
+		
 	}
 
 // // mengembalika data yang terhapus status = 0 
@@ -176,8 +176,8 @@ class M_peserta extends CI_Model {
 // 		$id=$this->m_config->id_peserta();
 // 		$this->db->set('status', 0);
 // 		$this->db->where($id, $id_peserta);
-// 		$hsl=$this->db->update($tbl);
-// 		return $hsl;
+// return $this->db->update($tbl);
+// 		
 // 	}
 
 
@@ -188,8 +188,8 @@ class M_peserta extends CI_Model {
 	// 	$tbl=$this->m_config->tbl_peserta();
 	// 	$this->db->where('semester', $semester);
 	// 	$this->db->where('satus', 0);
-	// 	$hsl=$this->db->get($tbl);
-	// 	return $hsl;
+	// return $this->db->get($tbl);
+	// 	
 	// }
 
  //   // menampilkan semua data pada table peserta dengan status 0 (ada)
@@ -198,8 +198,8 @@ class M_peserta extends CI_Model {
 
 	// 	$tbl=$this->m_config->tbl_peserta();
 	// 	$this->db->where('status', 0);
-	// 	$hsl=$this->db->get($tbl);
-	// 	return $hsl;
+	// return $this->db->get($tbl);
+	// 	
 
 	// }
 
@@ -212,8 +212,8 @@ class M_peserta extends CI_Model {
 	// 	$tbl=$this->m_config->tbl_peserta();
 	// 	$this->db->where('jenis_kelamin', $jenis_kelamin);
 	// 	$this->db->where('status', 0);
-	// 	$hsl=$this->db->get($tbl);
-	// 	return $hsl;
+	// return $this->db->get($tbl);
+	// 	
 	// }
 
 

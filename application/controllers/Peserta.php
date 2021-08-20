@@ -53,7 +53,7 @@ class Peserta extends CI_Controller {
 		if($this->session->userdata('access')=='4'){
 			$id_peserta=$this->session->userdata('u_id');
 			$data['judul']='Profil';
-			$data['data']=$this->m_peserta->get_profile($id_peserta); 
+			$data['data']=$this->m_peserta->get_profile($id_peserta)->row_array();
 			$this->load->view('/templates/peserta/v_header',$data);
 			$this->load->view('/home/peserta/v_profile',$data);
 			$this->load->view('/templates/peserta/v_footer',$data);
@@ -66,7 +66,7 @@ class Peserta extends CI_Controller {
 		if($this->session->userdata('access')=='4'){
 			$id_peserta=$this->session->userdata('u_id');
 			$data['judul']='Ubah profil';
-			$data['data']=$this->m_peserta->get_profile($id_peserta); 
+			$data['data']=$this->m_peserta->get_profile($id_peserta)->row_array();
 			$this->load->view('/templates/peserta/v_header',$data);
 			$this->load->view('/home/peserta/v_edit_profile',$data);
 			$this->load->view('/templates/peserta/v_footer',$data);
@@ -79,7 +79,7 @@ class Peserta extends CI_Controller {
 		if($this->session->userdata('access')=='4'){
 			$id_peserta=$this->session->userdata('u_id');
 			$data['judul']='Keamanan';
-			$data['data']=$this->m_peserta->get_profile($id_peserta);
+			$data['data']=$this->m_peserta->get_profile($id_peserta)->row_array();
 			$this->load->view('/templates/peserta/v_header',$data);
 			$this->load->view('/home/peserta/v_security',$data);
 			$this->load->view('/templates/peserta/v_footer',$data);
@@ -92,7 +92,7 @@ class Peserta extends CI_Controller {
 		if($this->session->userdata('access')=='4'){
 			$data['judul']='Akun sosial media';
 			$id_peserta=$this->session->userdata('u_id');
-			$data['data']=$this->m_peserta->get_profile($id_peserta);
+			$data['data']=$this->m_peserta->get_profile($id_peserta)->row_array();
 			$this->load->view('/templates/peserta/v_header',$data);
 			$this->load->view('/home/peserta/v_social',$data);
 			$this->load->view('/templates/peserta/v_footer',$data);
@@ -108,7 +108,7 @@ class Peserta extends CI_Controller {
 
 	public function update_foto(){
 		if($this->session->userdata('access')=='4'){
-			$id_peserta=$this->session->userdata('u_id');
+			$data['data']=$this->m_peserta->get_profile($id_peserta)->row_array();
 			$username=$this->session->userdata('user');
 			// $foto=$this->input->post('foto'); 
 			$config['upload_path']          = 'assets/images/users/';
@@ -249,15 +249,24 @@ class Peserta extends CI_Controller {
 		if($this->session->userdata('access')=='4'){
 			$id_peserta=$this->session->userdata('u_id');
 			$email=$this->input->post('email');
+			$this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');
 
-			$data = array(
-				'email' => htmlspecialchars($this->input->post('email',true)),
-			);
+			if ($this->form_validation->run() == false) { 
+				
+				echo $this->session->set_tempdata('msg','<div class="alert alert-danger" role="alert">Format email salah </div>', 2);
 
-			$this->m_peserta->update_profile($id_peserta,$data);
+				redirect("peserta/security");
 
-			echo $this->session->set_tempdata('msg','<div class="alert alert-success" role="alert"> Email berhasil diubah</div>', 2);
-			redirect("peserta/security");
+			}else{ 
+				$data = array(
+					'email' => htmlspecialchars($this->input->post('email',true)),
+				);
+
+				$this->m_peserta->update_profile($id_peserta,$data);
+
+				echo $this->session->set_tempdata('msg','<div class="alert alert-success" role="alert"> Email berhasil diubah</div>', 2);
+				redirect("peserta/security");
+			}
 		}else{
 			$this->load->view('/maintenance/v_error_404');
 		}
@@ -286,7 +295,7 @@ class Peserta extends CI_Controller {
 
 					$this->m_peserta->update_profile($id_peserta,$data);
 
-			
+
 
 					echo $this->session->set_tempdata('msg','<div class="alert alert-success" role="alert"> Kata sandi berhasil diubah</div>', 2);
 					redirect("peserta/security");

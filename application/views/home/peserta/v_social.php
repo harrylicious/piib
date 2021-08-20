@@ -1,8 +1,4 @@
-								<?php foreach ($data->result_array() as $key ) {
-									$foto=$key['foto'];
-									$username=$key['username'];
-									$nama_lengkap=$key['nama_lengkap'];
-									?>
+
 									<div class="pt-5 pb-5">
 										<div class="container">
 											<!-- User info -->
@@ -17,17 +13,17 @@
 													class="d-flex align-items-end justify-content-between bg-white px-4 pt-2 pb-4 rounded-none rounded-bottom shadow-sm">
 													<div class="d-flex align-items-center">
 														<div class="mr-2 position-relative d-flex justify-content-end align-items-end mt-n5">
-															<img src="<?= base_url('assets/images/users/'.$foto);?>" class="avatar-xl rounded-circle border-width-4 border-white"
+															<img src="<?= base_url('assets/images/users/'.$data['foto'] );?>" class="avatar-xl rounded-circle border-width-4 border-white"
 															alt="" />
 														</div>
 														<div class="lh-1">
 															<h2 class="mb-0">
-																<?= $nama_lengkap ?>
+																<?= $data['nama_lengkap']  ?>
 
 															</h2>
 
-															<p class="mb-0 d-block">@<?= $username ?></p>
-														<?php } ?>
+															<p class="mb-0 d-block">@<?= $data['username']  ?></p>
+											
 													</div>
 												</div>
 												<div>
@@ -101,13 +97,7 @@
 											</div>
 											<!-- Card body -->
 
-											<?php foreach ($data->result_array() as $key ) {
-												$link_portfolio=$key['link_portfolio'];
-												$link_website=$key['link_website'];
-												$link_linkedin=$key['link_linkedin'];
-												$link_facebook=$key['link_facebook'];
-
-												?>
+								
 
 												<!-- Card body -->
 												<div class="card-body">
@@ -118,7 +108,7 @@
 																<h5>Portfolio</h5>
 															</div>
 															<div class="col-lg-9 col-md-8 col-12">
-																<input name="link_portfolio" value="<?= $link_portfolio ?>" type="text" class="form-control mb-1" placeholder="Link Portfolio Anda" />								
+																<input name="link_portfolio" value="<?= $data['link_portfolio']  ?>" type="text" class="form-control mb-1" placeholder="Link Portfolio Anda" />								
 															</div>
 														</div>
 														<!-- website -->
@@ -127,7 +117,7 @@
 																<h5>Website</h5>
 															</div>
 															<div class="col-lg-9 col-md-8 col-12">
-																<input name="link_website" value="<?= $link_website?>" type="text" class="form-control mb-1" placeholder="link Website Anda" />
+																<input name="link_website" value="<?= $data['link_website'] ?>" type="text" class="form-control mb-1" placeholder="link Website Anda" />
 															</div>
 														</div>
 														<!-- Linkedin -->
@@ -136,7 +126,7 @@
 																<h5>Linkedin</h5>
 															</div>
 															<div class="col-lg-9 col-md-8 col-12">
-																<input name="link_linkedin" value="<?= $link_linkedin ?>" type="text" class="form-control mb-1" placeholder="Link Linkedin Anda" />
+																<input name="link_linkedin" value="<?= $data['link_linkedin']  ?>" type="text" class="form-control mb-1" placeholder="Link Linkedin Anda" />
 															</div>
 														</div>
 														<!-- Facebook -->
@@ -145,11 +135,11 @@
 																<h5>Facebook</h5>
 															</div>
 															<div class="col-lg-9 col-md-8 col-12">
-																<input name="link_facebook" value="<?= $link_facebook ?>" type="text" class="form-control mb-1" placeholder="Link Facebook Anda " />
+																<input name="link_facebook" value="<?= $data['link_facebook']  ?>" type="text" class="form-control mb-1" placeholder="Link Facebook Anda " />
 															</div>
 														</div>
 
-														<?php } ?> <!-- penutup foreach  -->
+											
 
 														<!-- Button -->
 														<div class="row">
