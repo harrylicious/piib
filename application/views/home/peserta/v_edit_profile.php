@@ -1,8 +1,4 @@
-								<?php foreach ($data->result_array() as $key ) {
-									$foto=$key['foto'];
-									$username=$key['username'];
-									$nama_lengkap=$key['nama_lengkap'];
-									?>
+	
 									<div class="pt-5 pb-5">
 										<div class="container">
 											<!-- User info -->
@@ -17,16 +13,16 @@
 													class="d-flex align-items-end justify-content-between bg-white px-4 pt-2 pb-4 rounded-none rounded-bottom shadow-sm">
 													<div class="d-flex align-items-center">
 														<div class="mr-2 position-relative d-flex justify-content-end align-items-end mt-n5">
-															<img src="<?= base_url('assets/images/users/'.$foto);?>" class="avatar-xl rounded-circle border-width-4 border-white"
+															<img src="<?= base_url('assets/images/users/'.$data['foto']);?>" class="avatar-xl rounded-circle border-width-4 border-white"
 															alt="" />
 														</div>
 														<div class="lh-1">
 															<h2 class="mb-0">
-																<?= $nama_lengkap ?>
+																<?= $data['nama_lengkap']; ?>
 															</h2>
 
-															<p class="mb-0 d-block">@<?= $username ?></p>
-														<?php } ?>
+															<p class="mb-0 d-block">@<?= $data['username']; ?></p>
+											
 													</div>
 												</div>
 												<div>
@@ -99,30 +95,11 @@
 											</div>
 											<!-- Card body -->
 
-											<?php foreach ($data->result_array() as $key ) {
-												$username=$key['username'];
-												$password=$key['password'];
-												$nim=$key['nim'];
-												$nama_lengkap=$key['nama_lengkap'];
-												$jenis_kelamin=$key['jenis_kelamin'];
-												$alamat=$key['alamat'];
-												$desa=$key['desa'];
-												$kecamatan=$key['kecamatan'];
-												$kabupaten=$key['kabupaten'];
-												$provinsi=$key['provinsi'];
-												$tempat_lahir=$key['tempat_lahir'];
-												$tanggal_lahir=$key['tanggal_lahir'];
-												$semester=$key['semester'];
-												$jurusan=$key['jurusan'];
-												$email=$key['email'];
-												$telpon=$key['telpon'];
-
-												?>
 
 												<div class="card-body">
 													<div class="d-lg-flex align-items-center justify-content-between">
 														<div class="d-flex align-items-center mb-4 mb-lg-0">
-															<img src="<?= base_url('assets/images/users/'.$foto);?>" id="img-uploaded" class="avatar-xl rounded-circle" alt="" />
+															<img src="<?= base_url('assets/images/users/'.$data['foto'])?>" id="img-uploaded" class="avatar-xl rounded-circle" alt="" />
 															<div class="ml-3">
 																<h4 class="mb-0">Foto profil anda</h4>
 																<p class="mb-0">
@@ -192,7 +169,7 @@
 												</form>
 												<form action="<?= base_url();?>peserta/delete_foto" method="post">
 													<!-- Modal hapus foto -->
-													<input name="foto" value="<?= $foto ?>" type="text" hidden>
+													<input name="foto" value="<?= $data['foto']; ?>" type="text" hidden>
 
 													<div class="modal fade" id="DeleteFotoModal" tabindex="-1" role="dialog" aria-labelledby="DeleteFotoModalLabel" aria-hidden="true">
 														<div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" role="document">
@@ -242,22 +219,22 @@
 														<!-- NIM -->
 														<div class="form-group col-12 col-md-6">
 															<label class="form-label" for="nim">NIM</label>
-															<input value="<?= $nim ?>" name="nim" type="text" id="nim" class="form-control" placeholder="NIM" />
+															<input value="<?= $data['nim']; ?>" name="nim" type="text" id="nim" class="form-control" placeholder="NIM" />
 														</div>
 														<!-- Nama Lengkap -->
 														<div class="form-group col-12 col-md-6">
 															<label for="nama_lengkap" class="form-label" for="nama_lengkap">Nama lengkap<font color="red">*</font> </label>
-															<input name="nama_lengkap" value="<?= $nama_lengkap ?>" type="text" id="nama_lengkap" class="form-control" placeholder="Nama Lengkap" required />
+															<input name="nama_lengkap" value="<?= $data['nama_lengkap']; ?>" type="text" id="nama_lengkap" class="form-control" placeholder="Nama Lengkap" required />
 														</div>
 														<!-- Jenis Kelamin -->
 														<div class="form-group col-12 col-md-6">
 															<label for="jenis_kelamin" class="form-label">Jenis Kelamin<font color="red">*</font></label>
 															<!-- <input id="jenis_kelamin" name="jenis_kelamin" value="<?= $jenis_kelamin ?>" type="text" id="jenis_kelamin" class="form-control" placeholder="Jenis kelamin" required /> -->
 															<select id="jenis_kelamin" name="jenis_kelamin" class="selectpicker" data-width="100%">
-																<?php if ($jenis_kelamin == 'Laki-laki'){ ?>
+																<?php if ( $data['jenis_kelamin']  == 'Laki-laki'){ ?>
 																	<option value="Laki-laki">Laki Laki</option>
 																	<option value="Perempuan">Perempuan</option>
-																<?php } elseif ($jenis_kelamin == 'Perempuan') { ?>
+																<?php } elseif ($data['jenis_kelamin']  == 'Perempuan') { ?>
 																	<option value="Perempuan">Perempuan</option>
 																	<option value="Laki-laki">Laki Laki</option>
 																<?php } else { ?>
@@ -270,55 +247,55 @@
 														<!-- Alamat -->
 														<div class="form-group col-12 col-md-6">
 															<label for="alamat" class="form-label" for="alamt">Alamat<font color="red">*</font></label>
-															<input id="alamat" name="alamat" value="<?= $alamat ?>" type="text" id="alamat" class="form-control" placeholder="Alamat" required />
+															<input id="alamat" name="alamat" value="<?= $data['alamat']; ?>" type="text" id="alamat" class="form-control" placeholder="Alamat" required />
 														</div>
 														<!-- Desa-->
 														<div class="form-group col-12 col-md-6">
 															<label class="form-label" for="desa">Desa<font color="red">*</font></label>
-															<input name="desa" value="<?= $desa ?>" type="text" id="desa" class="form-control" placeholder="Desa" required />
+															<input name="desa" value="<?= $data['desa']; ?>" type="text" id="desa" class="form-control" placeholder="Desa" required />
 														</div>
 														<!-- Kecamatan-->
 														<div class="form-group col-12 col-md-6">
 															<label class="form-label" for="kecamatan">Kecamatan<font color="red">*</font></label>
-															<input name="kecamatan" value="<?= $kecamatan ?>" type="text" id="kecamatan" class="form-control" placeholder="Kecamatan" required />
+															<input name="kecamatan" value="<?= $data['kecamatan']; ?>" type="text" id="kecamatan" class="form-control" placeholder="Kecamatan" required />
 														</div>
 														<!-- Kabupaten-->
 														<div class="form-group col-12 col-md-6">
 															<label class="form-label" for="kabupaten">Kabupaten<font color="red">*</font></label>
-															<input name="kabupaten" value="<?= $kabupaten ?>" type="text" id="kabupaten" class="form-control" placeholder="Kabupaten" required />
+															<input name="kabupaten" value="<?= $data['kabupaten']; ?>" type="text" id="kabupaten" class="form-control" placeholder="Kabupaten" required />
 														</div>
 														<!-- Provinsi -->
 														<div class="form-group col-12 col-md-6">
 															<label class="form-label" for="provinsi">Provinsi<font color="red">*</font></label>
-															<input value="<?= $provinsi ?>" name="provinsi" type="text" id="provinsi" class="form-control" placeholder="Provinsi" required />
+															<input value="<?= $data['provinsi']; ?>" name="provinsi" type="text" id="provinsi" class="form-control" placeholder="Provinsi" required />
 														</div>
 														<!-- Tempat Lahir -->
 														<div class="form-group col-12 col-md-6">
 															<label class="form-label" for="tempat_lahir">Tempat lahir<font color="red">*</font></label>
-															<input name="tempat_lahir" value="<?= $tempat_lahir ?>" type="text" id="tempat_lahir" class="form-control" placeholder="Tempat lahir" required />
+															<input name="tempat_lahir" value="<?= $data['tempat_lahir']; ?>" type="text" id="tempat_lahir" class="form-control" placeholder="Tempat lahir" required />
 														</div>
 														<!-- Tanggal Lahir -->
 														<div class="form-group col-12 col-md-6">
 															<label class="form-label" for="tanggal_lahir">Tanggal lahir<font color="red">*</font></label>
-															<input name="tanggal_lahir" value="<?= $tanggal_lahir ?>" type="date" id="tanggal_lahir" class="form-control" placeholder="Tanggal lahir" required />
+															<input name="tanggal_lahir" value="<?= $data['tanggal_lahir']; ?>" type="date" id="tanggal_lahir" class="form-control" placeholder="Tanggal lahir" required />
 														</div>
 														<!-- Semester -->
 														<div class="form-group col-12 col-md-6">
 															<label class="form-label" for="semester">Semester</label>
-															<input name="semester" value="<?= $semester ?>" type="text" id="semester" class="form-control" placeholder="Semester" required />
+															<input name="semester" value="<?= $data['semester']; ?>" type="text" id="semester" class="form-control" placeholder="Semester" required />
 														</div>
 														<!-- jurusan -->
 														<div class="form-group col-12 col-md-6">
 															<label class="form-label" for="jurusan">Jurusan<font color="red">*</font></label>
-															<input name="jurusan" value="<?= $jurusan ?>" type="text" id="jurusan" class="form-control" placeholder="Jurusan" required />
+															<input name="jurusan" value="<?= $data['jurusan']; ?>" type="text" id="jurusan" class="form-control" placeholder="Jurusan" required />
 														</div>
 														<!-- Telepon -->
 														<div class="form-group col-12 col-md-6">
 															<label for="telpon" class="form-label" for="telpon">Telepon<font color="red">*</font></label>
-															<input id="telpon" name="telpon" value="<?= $telpon ?>" type="text" id="telepon" class="form-control" placeholder="Telepon" required />
+															<input id="telpon" name="telpon" value="<?= $data['telpon']; ?>" type="text" id="telepon" class="form-control" placeholder="Telepon" required />
 														</div>
 
-														<?php } ?> <!-- penutup foreach -->
+									
 
 														<div class="col-12">
 															<!-- Button -->

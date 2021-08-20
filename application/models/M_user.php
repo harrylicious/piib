@@ -15,8 +15,8 @@ class M_user extends CI_Model {
 		$tbl=$this->m_config->tbl_user();
 		$id=$this->m_config->id_user();
 		$hsl=$this->db->where($id, $id_user);
-		$hsl=$this->db->get($tbl);
-		return $hsl;
+		return $this->db->get($tbl);
+		
 	}
 
  	// update foto
@@ -24,8 +24,8 @@ class M_user extends CI_Model {
 		$tbl=$this->m_config->tbl_user();
 		$id=$this->m_config->id_user();
 		$this->db->where($id, $id_user);
-		$hsl=$this->db->update($tbl, $data);
-		return $hsl;
+		return $this->db->update($tbl, $data);
+		
 	} 
 
 	// delete foto
@@ -33,16 +33,16 @@ class M_user extends CI_Model {
 		$tbl=$this->m_config->tbl_user();
 		$id=$this->m_config->id_user();
 		$this->db->where($id, $id_user);
-		$hsl=$this->db->update($tbl, $data);
-		return $hsl;
+		return $this->db->update($tbl, $data);
+		
 	}
 
  	// tambah pengguna
 	function add_user($data){
 		$tbl=$this->m_config->tbl_user();
 		$id=$this->m_config->id_user();
-		$hsl=$this->db->insert($tbl, $data);
-		return $hsl;
+		return $this->db->insert($tbl, $data);
+		
 	} 	
 
 	// delete pengguna
@@ -50,8 +50,8 @@ class M_user extends CI_Model {
 		$tbl=$this->m_config->tbl_user();
 		$id=$this->m_config->id_user();
 		$this->db->where($id, $id_user);
-		$hsl=$this->db->update($tbl, $data);
-		return $hsl;
+		return $this->db->update($tbl, $data);
+		
 	}
 
 	// update profil
@@ -59,8 +59,8 @@ class M_user extends CI_Model {
 		$tbl=$this->m_config->tbl_user();
 		$id=$this->m_config->id_user();
 		$this->db->where($id, $id_user);
-		$hsl=$this->db->update($tbl, $data);
-		return $hsl;
+		return $this->db->update($tbl, $data);
+		
 	}
 
 	// ubah email
@@ -69,8 +69,8 @@ class M_user extends CI_Model {
 		$id=$this->m_config->id_user();
 		$this->db->set('email', $data);
 		$this->db->where($id, $id_user);
-		$hsl=$this->db->update($tbl);
-		return $hsl;
+		return $this->db->update($tbl);
+		
 	}
 
 	// cek_pengguna
@@ -79,8 +79,8 @@ class M_user extends CI_Model {
 		$id=$this->m_config->id_user();
 		$this->db->where($id, $id_user);
 		$this->db->where('username', $username);
-		$hsl = $this->db->get($tbl)->row_array();
-		return $hsl;
+		return $this->db->get($tbl)->row_array();
+		
 	}
 
 	// ubah password
@@ -89,8 +89,8 @@ class M_user extends CI_Model {
 		$id=$this->m_config->id_user();
 		$this->db->set('password', $data);
 		$this->db->where($id, $id_user);
-		$hsl=$this->db->update($tbl);
-		return $hsl;
+		return $this->db->update($tbl);
+		
 	}
 
 	 // peanggil user level admin dengan status 0 saja
@@ -99,16 +99,16 @@ class M_user extends CI_Model {
 		$id=$this->m_config->id_user();
 		$this->db->where("status", "0");
 		$this->db->where("level", "admin"); 
-		$hsl=$this->db->get($tbl);
-		return $hsl;
+		return $this->db->get($tbl);
+		
 	}
 
 	function get_admin_user_profile($id_admin){
 		$tbl=$this->m_config->tbl_user();
 		$id=$this->m_config->id_user();
 		$this->db->where($id, $id_admin); // peanggil user level admin saja
-		$hsl=$this->db->get($tbl);
-		return $hsl;
+		return $this->db->get($tbl);
+		
 	}	
 
 	 // peanggil user level mentor dengan status 0 saja
@@ -117,16 +117,16 @@ class M_user extends CI_Model {
 		$id=$this->m_config->id_user();
 		$this->db->where("status", "0");
 		$this->db->where("level", "mentor");
-		$hsl=$this->db->get($tbl, $limit);
-		return $hsl;
+		return $this->db->get($tbl, $limit);
+		
 	}	
 	
 	function get_mentor_user_profile($id_mentor){
 		$tbl=$this->m_config->tbl_user();
 		$id=$this->m_config->id_user();
 		$this->db->where($id, $id_mentor); // peanggil user level mentor saja
-		$hsl=$this->db->get($tbl);
-		return $hsl;
+		return $this->db->get($tbl);
+		
 	}	
 
 
@@ -138,8 +138,8 @@ class M_user extends CI_Model {
  //    //add user
 	// function add_user($data){
 	// 	$tbl=$this->m_config->tbl_user();
-	// 	$hsl=$this->db->insert($tbl, $data);
-	// 	return $hsl;
+	// 	return $this->db->insert($tbl, $data);
+	// 	
 	// }
 
  //    // update user
@@ -147,15 +147,15 @@ class M_user extends CI_Model {
 	// 	$tbl=$this->m_config->tbl_user();
 	// 	$id=$this->m_config->id_user();
 	// 	$this->db->where($id, $id_user);
-	// 	$hsl=$this->db->update($tbl, $data);
-	// 	return $hsl;
+	// 	return $this->db->update($tbl, $data);
+	// 	
 	// } 
 
 	// //add user
 	// function add_user($data){
 	// 	$tbl=$this->m_config->tbl_user();
-	// 	$hsl=$this->db->insert($tbl, $data);
-	// 	return $hsl;
+	// 	return $this->db->insert($tbl, $data);
+	// 	
 	// }
 
  //    // update user
@@ -163,8 +163,8 @@ class M_user extends CI_Model {
 	// 	$tbl=$this->m_config->tbl_user();
 	// 	$id=$this->m_config->id_user();
 	// 	$this->db->where($id, $id_user);
-	// 	$hsl=$this->db->update($tbl, $data);
-	// 	return $hsl;
+	// 	return $this->db->update($tbl, $data);
+	// 	
 	// }
 
  //    // change password
@@ -172,8 +172,8 @@ class M_user extends CI_Model {
 	// 	$tbl=$this->m_config->tbl_user();
 	// 	$id=$this->m_config->id_user();
 	// 	$this->db->where($id, $id_user);
-	// 	$hsl=$this->db->update($tbl, $data);
-	// 	return $hsl;
+	// 	return $this->db->update($tbl, $data);
+	// 	
 	// }
 
 	// // verifikasi user dari admin
@@ -203,8 +203,8 @@ class M_user extends CI_Model {
 	// 	$tbl=$this->m_config->tbl_user();
 	// 	$id=$this->m_config->id_user();
 	// 	$this->db->where($id, $id_user);
-	// 	$hsl=$this->db->delete($tbl);
-	// 	return $hsl;
+	// 	return $this->db->delete($tbl);
+	// 	
 	// }
 
  // 	// delete user tanpa menghapus data fisik
@@ -214,8 +214,8 @@ class M_user extends CI_Model {
 	// 	$id=$this->m_config->id_user();
 	// 	$this->db->set('status', 1);
 	// 	$this->db->where($id, $id_user);
-	// 	$hsl=$this->db->update($tbl);
-	// 	return $hsl;
+	// 	return $this->db->update($tbl);
+	// 	
 	// }
 
  // 	// mengembalika data yang terhapus status = 0 
@@ -224,8 +224,8 @@ class M_user extends CI_Model {
 	// 	$id=$this->m_config->id_user();
 	// 	$this->db->set('status', 0);
 	// 	$this->db->where($id, $id_user);
-	// 	$hsl=$this->db->update($tbl);
-	// 	return $hsl;
+	// 	return $this->db->update($tbl);
+	// 	
 	// }
 
 
@@ -234,32 +234,32 @@ class M_user extends CI_Model {
 	// function get_all(){
 	// 	$tbl=$this->m_config->tbl_user();
 	// 	$this->db->where('status', 0);
-	// 	$hsl=$this->db->get($tbl);
-	// 	return $hsl;
+	// 	return $this->db->get($tbl);
+	// 	
 	// }
 
 	// function get_mentor(){
 	// 	$tbl=$this->m_config->tbl_user();
 	// 	$this->db->where('status', 0);
 	// 	$this->db->where('level', 'mentor');
-	// 	$hsl=$this->db->get($tbl);
-	// 	return $hsl;
+	// 	return $this->db->get($tbl);
+	// 	
 	// }
 
 	// function get_user(){
 	// 	$tbl=$this->m_config->tbl_user();
 	// 	$this->db->where('status', 0);
 	// 	$this->db->where('level', 'user');
-	// 	$hsl=$this->db->get($tbl);
-	// 	return $hsl;
+	// 	return $this->db->get($tbl);
+	// 	
 	// }
 
 	// // menampilkan semua data user pada table berdasarkan level
 	// function get_level_user($level){
 	// 	$tbl=$this->m_config->tbl_user();
 	// 	$this->db->where('level', $level);
-	// 	$hsl=$this->db->get($tbl);
-	// 	return $hsl;
+	// 	return $this->db->get($tbl);
+	// 	
 	// }
 
 
@@ -268,8 +268,8 @@ class M_user extends CI_Model {
 	// 	$tbl=$this->m_config->tbl_user();
 	// 	$this->db->where('status', 0);
 	// 	$this->db->where('level', $level);
-	// 	$hsl=$this->db->get($tbl);
-	// 	return $hsl;
+	// 	return $this->db->get($tbl);
+	// 	
 	// }
 
 
