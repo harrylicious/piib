@@ -1,23 +1,4 @@
-          		<?php foreach ($data->result_array() as $key ) {
-          			$foto=$key['foto'];
-          			$nip=$key['nip'];
-          			$nama_lengkap=$key['nama_lengkap'];
-          			$jenis_kelamin=$key['jenis_kelamin'];
-          			$alamat=$key['alamat'];
-          			$desa=$key['desa'];
-          			$kecamatan=$key['kecamatan'];
-          			$kabupaten=$key['kabupaten'];
-          			$provinsi=$key['provinsi'];
-          			$tempat_lahir=$key['tempat_lahir'];
-          			$tanggal_lahir=$key['tanggal_lahir'];
-          			$semester=$key['semester'];
-          			$telpon=$key['telpon'];
-          			$id_user=$key['id_user'];
-          			$username=$key['username'];
-          			$password=$key['password'];
-          			$email=$key['email'];
 
-          			?>
 
           			<?php 
           			/* sesi fokus aktif tab */
@@ -85,7 +66,7 @@
           											<div class="card-header">
           												<center><?php echo $this->session->tempdata('msg');?></center> 
 
-          												<img src="<?= base_url();?>assets/images/users/<?= $foto?>" id="img-uploaded" class="avatar-xl rounded-circle" alt="" />
+          												<img src="<?= base_url();?>assets/images/users/<?= $data['foto'] ?>" id="img-uploaded" class="avatar-xl rounded-circle" alt="" />
           												<h3 class="mb-0 mt-5">Detail Profil Anda</h3>
           													<!-- <p class="mb-0">
           														Berikut ini adalah detail informasi akun anda. 
@@ -100,17 +81,17 @@
           															<!-- NIP -->
           															<div class="form-group col-12 col-md-6">
           																<label class="form-label" for="nip">nip</label>
-          																<input value="<?= $nip ?>" name="nip" type="text" id="nip" class="form-control" placeholder="NIP" disabled />
+          																<input value="<?= $data['nip'] ?>" name="nip" type="text" id="nip" class="form-control" placeholder="NIP" disabled />
           															</div>
           															<!-- Nama Lengkap -->
           															<div class="form-group col-12 col-md-6">
           																<label for="nama_lengkap" class="form-label" for="nama_lengkap">Nama lengkap</label>
-          																<input name="nama_lengkap" value="<?= $nama_lengkap ?>" type="text" id="nama_lengkap" class="form-control" placeholder="Nama Lengkap" disabled />
+          																<input name="nama_lengkap" value="<?= $data['nama_lengkap'] ?>" type="text" id="nama_lengkap" class="form-control" placeholder="Nama Lengkap" disabled />
           															</div>
           															<!-- Jenis Kelamin -->
           															<div class="form-group col-12 col-md-6">
           																<label for="jenis_kelamin" class="form-label">Jenis Kelamin</label>
-          																<input id="jenis_kelamin" name="jenis_kelamin" value="<?= $jenis_kelamin ?>" type="text" id="jenis_kelamin" class="form-control" placeholder="Jenis kelamin" disabled />
+          																<input id="jenis_kelamin" name="jenis_kelamin" value="<?= 'tes' ?>" type="text" id="jenis_kelamin" class="form-control" placeholder="Jenis kelamin" disabled />
 								<!-- 	<select id="jenis_kelamin" name="jenis_kelamin" class="selectpicker" data-width="100%">
 										<?php if ($jenis_kelamin == 'Laki-laki'){ ?>
 											<option value="Laki-laki">Laki Laki</option>
@@ -128,43 +109,43 @@
 								<!-- Alamat -->
 								<div class="form-group col-12 col-md-6">
 									<label for="alamat" class="form-label" for="alamt">Alamat</label>
-									<input id="alamat" name="alamat" value="<?= $alamat ?>" type="text" id="alamat" class="form-control" placeholder="Alamat" disabled />
+									<input id="alamat" name="alamat" value="<?= $data['alamat'] ?>" type="text" id="alamat" class="form-control" placeholder="Alamat" disabled />
 								</div>
 								<!-- Desa-->
 								<div class="form-group col-12 col-md-6">
 									<label class="form-label" for="desa">Desa</label>
-									<input name="desa" value="<?= $desa ?>" type="text" id="desa" class="form-control" placeholder="Desa" disabled />
+									<input name="desa" value="<?= $data['desa'] ?>" type="text" id="desa" class="form-control" placeholder="Desa" disabled />
 								</div>
 								<!-- Kecamatan-->
 								<div class="form-group col-12 col-md-6">
 									<label class="form-label" for="kecamatan">Kecamatan</label>
-									<input name="kecamatan" value="<?= $kecamatan ?>" type="text" id="kecamatan" class="form-control" placeholder="Kecamatan" disabled />
+									<input name="kecamatan" value="<?= $data['kecamatan'] ?>" type="text" id="kecamatan" class="form-control" placeholder="Kecamatan" disabled />
 								</div>
 								<!-- Kabupaten-->
 								<div class="form-group col-12 col-md-6">
 									<label class="form-label" for="kabupaten">Kabupaten</label>
-									<input name="kabupaten" value="<?= $kabupaten ?>" type="text" id="kabupaten" class="form-control" placeholder="Kabupaten" disabled />
+									<input name="kabupaten" value="<?= $data['kabupaten'] ?>" type="text" id="kabupaten" class="form-control" placeholder="Kabupaten" disabled />
 								</div>
 								<!-- Provinsi -->
 								<div class="form-group col-12 col-md-6">
 									<label class="form-label" for="provinsi">Provinsi</label>
-									<input value="<?= $provinsi ?>" name="provinsi" type="text" id="provinsi" class="form-control" placeholder="Provinsi" disabled />
+									<input value="<?= $data['provinsi'] ?>" name="provinsi" type="text" id="provinsi" class="form-control" placeholder="Provinsi" disabled />
 								</div>
 								<!-- Tempat Lahir -->
 								<div class="form-group col-12 col-md-6">
 									<label class="form-label" for="tempat_lahir">Tempat lahir</label>
-									<input name="tempat_lahir" value="<?= $tempat_lahir ?>" type="text" id="tempat_lahir" class="form-control" placeholder="Tempat lahir" disabled />
+									<input name="tempat_lahir" value="<?= $data['tempat_lahir'] ?>" type="text" id="tempat_lahir" class="form-control" placeholder="Tempat lahir" disabled />
 								</div>
 								<!-- Tanggal Lahir -->
 								<div class="form-group col-12 col-md-6">
 									<label class="form-label" for="tanggal_lahir">Tanggal lahir</label>
-									<input name="tanggal_lahir" value="<?= $tanggal_lahir ?>" type="date" id="tanggal_lahir" class="form-control" placeholder="Tanggal lahir" disabled />
+									<input name="tanggal_lahir" value="<?= $data['tanggal_lahir'] ?>" type="date" id="tanggal_lahir" class="form-control" placeholder="Tanggal lahir" disabled />
 								</div>
 								<!-- Semester -->
-								<div class="form-group col-12 col-md-6">
+					<!-- 			<div class="form-group col-12 col-md-6">
 									<label class="form-label" for="semester">Semester</label>
-									<input name="semester" value="<?= $semester ?>" type="text" id="semester" class="form-control" placeholder="Semester" disabled />
-								</div>
+									<input name="semester" value="<?= $data['semester'] ?>" type="text" id="semester" class="form-control" placeholder="Semester" disabled />
+								</div> -->
 								<!-- jurusan -->
 								<!-- <div class="form-group col-12 col-md-6">
 									<label class="form-label" for="jurusan">Jurusan</label>
@@ -173,7 +154,7 @@
 								<!-- Telepon -->
 								<div class="form-group col-12 col-md-6">
 									<label for="telpon" class="form-label" for="telpon">Telepon</label>
-									<input id="telpon" name="telpon" value="<?= $telpon ?>" type="text" id="telepon" class="form-control" placeholder="Telepon" disabled />
+									<input id="telpon" name="telpon" value="<?= $data['telpon'] ?>" type="text" id="telepon" class="form-control" placeholder="Telepon" disabled />
 								</div>
 
 							</form>
@@ -204,7 +185,7 @@
 					<div class="card-body">
 						<div class="d-lg-flex align-items-center justify-content-between">
 							<div class="d-flex align-items-center mb-4 mb-lg-0">
-								<img src="<?= base_url();?>assets/images/users/<?= $foto?>" id="img-uploaded" class="avatar-xl rounded-circle" alt="" />
+								<img src="<?= base_url();?>assets/images/users/<?= $data['foto'] ?>" id="img-uploaded" class="avatar-xl rounded-circle" alt="" />
 								<div class="ml-3">
 									<h4 class="mb-0">Foto profil anda</h4>
 									<p class="mb-0">
@@ -275,7 +256,7 @@
 					</form>
 					<form action="<?= base_url();?>admin/delete_foto" method="post">
 						<!-- Modal hapus foto -->
-						<input name="foto" value="<?= $foto ?>" type="text" hidden>
+						<input name="foto" value="<?= $data['foto']  ?>" type="text" hidden>
 
 						<div class="modal fade" id="DeleteFotoModal" tabindex="-1" role="dialog" aria-labelledby="DeleteFotoModalLabel" aria-hidden="true">
 							<div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" role="document">
@@ -324,20 +305,20 @@
 						<form class="form-row" method="post" action="<?= base_url('admin/');?>update_profile">
 							<!-- NIP -->
 							<div class="form-group col-12 col-md-6">
-								<label class="form-label" for="nip">NIP</label>
-								<input value="<?= $nip ?>" name="nip" type="text" id="nip" class="form-control" placeholder="NIP"/>
+								<label class="form-label" for="nip">NIP<font color="red">*</font></label>
+								<input value="<?= $data['nip'] ?>" name="nip" type="text" id="nip" class="form-control" placeholder="NIP" required/>
 							</div>
 							<!-- Nama Lengkap -->
 							<div class="form-group col-12 col-md-6">
 								<label for="nama_lengkap" class="form-label" for="nama_lengkap">Nama lengkap<font color="red">*</font></label>
-								<input name="nama_lengkap" value="<?= $nama_lengkap ?>" type="text" id="nama_lengkap" class="form-control" placeholder="Nama Lengkap" required />
+								<input name="nama_lengkap" value="<?= $data['nama_lengkap'] ?>" type="text" id="nama_lengkap" class="form-control" placeholder="Nama Lengkap" required />
 							</div>
 							<!-- Jenis Kelamin -->
 							<div class="form-group col-12 col-md-6">
 								<label for="jenis_kelamin" class="form-label">Jenis Kelamin<font color="red">*</font></label>
 								<!-- <input id="jenis_kelamin" name="jenis_kelamin" value="<?= $jenis_kelamin ?>" type="text" id="jenis_kelamin" class="form-control" placeholder="Jenis kelamin" required /> -->
 								<select id="jenis_kelamin" name="jenis_kelamin" class="selectpicker" data-width="100%">
-									<?php if ($jenis_kelamin == 'Laki-laki'){ ?>
+									<?php if ( $data['jenis_kelamin'] == 'Laki-laki'){ ?>
 										<option value="Laki-laki">Laki Laki</option>
 										<option value="Perempuan">Perempuan</option>
 									<?php } elseif ($jenis_kelamin == 'Perempuan') { ?>
@@ -353,48 +334,48 @@
 							<!-- Alamat -->
 							<div class="form-group col-12 col-md-6">
 								<label for="alamat" class="form-label" for="alamt">Alamat<font color="red">*</font></label>
-								<input id="alamat" name="alamat" value="<?= $alamat ?>" type="text" id="alamat" class="form-control" placeholder="Alamat" required />
+								<input id="alamat" name="alamat" value="<?= $data['alamat'] ?>" type="text" id="alamat" class="form-control" placeholder="Alamat" required />
 							</div>
 							<!-- Desa-->
 							<div class="form-group col-12 col-md-6">
 								<label class="form-label" for="desa">Desa<font color="red">*</font></label>
-								<input name="desa" value="<?= $desa ?>" type="text" id="desa" class="form-control" placeholder="Desa" required />
+								<input name="desa" value="<?= $data['desa'] ?>" type="text" id="desa" class="form-control" placeholder="Desa" required />
 							</div>
 							<!-- Kecamatan-->
 							<div class="form-group col-12 col-md-6">
 								<label class="form-label" for="kecamatan">Kecamatan<font color="red">*</font></label>
-								<input name="kecamatan" value="<?= $kecamatan ?>" type="text" id="kecamatan" class="form-control" placeholder="Kecamatan" required />
+								<input name="kecamatan" value="<?= $data['kecamatan'] ?>" type="text" id="kecamatan" class="form-control" placeholder="Kecamatan" required />
 							</div>
 							<!-- Kabupaten-->
 							<div class="form-group col-12 col-md-6">
 								<label class="form-label" for="kabupaten">Kabupaten<font color="red">*</font></label>
-								<input name="kabupaten" value="<?= $kabupaten ?>" type="text" id="kabupaten" class="form-control" placeholder="Kabupaten" required />
+								<input name="kabupaten" value="<?= $data['kabupaten'] ?>" type="text" id="kabupaten" class="form-control" placeholder="Kabupaten" required />
 							</div>
 							<!-- Provinsi -->
 							<div class="form-group col-12 col-md-6">
 								<label class="form-label" for="provinsi">Provinsi<font color="red">*</font></label>
-								<input value="<?= $provinsi ?>" name="provinsi" type="text" id="provinsi" class="form-control" placeholder="Provinsi" required />
+								<input value="<?= $data['provinsi'] ?>" name="provinsi" type="text" id="provinsi" class="form-control" placeholder="Provinsi" required />
 							</div>
 							<!-- Tempat Lahir -->
 							<div class="form-group col-12 col-md-6">
 								<label class="form-label" for="tempat_lahir">Tempat lahir<font color="red">*</font></label>
-								<input name="tempat_lahir" value="<?= $tempat_lahir ?>" type="text" id="tempat_lahir" class="form-control" type="date" placeholder="Tempat lahir" required />
+								<input name="tempat_lahir" value="<?= $data['tempat_lahir'] ?>" type="text" id="tempat_lahir" class="form-control" type="date" placeholder="Tempat lahir" required />
 							</div>
 
 							<!-- Tanggal Lahir -->
 							<div class="form-group col-12 col-md-6">
 								<label class="form-label" for="tanggal_lahir">Tanggal lahir<font color="red">*</font></label>
-								<input name="tanggal_lahir" value="<?= $tanggal_lahir ?>" type="date" id="tanggal_lahir" class="form-control" placeholder="Tanggal lahir" required />
+								<input name="tanggal_lahir" value="<?= $data['tanggal_lahir'] ?>" type="date" id="tanggal_lahir" class="form-control" placeholder="Tanggal lahir" required />
 							</div>
 				<!-- 		<div  class="form-group col-12 col-md-6">
 							<label class="form-label" for="tanggal_lahir">Tanggal lahir</label>
 							<input value="<?= $tanggal_lahir ?>" id="tanggal_lahir" class="form-control flatpickr" type="text" placeholder="<?= $tanggal_lahir ?>" aria-describedby="basic-addon2">
 						</div> -->
 						<!-- Semester -->
-						<div class="form-group col-12 col-md-6">
+			<!-- 			<div class="form-group col-12 col-md-6">
 							<label class="form-label" for="semester">Semester</label>
 							<input name="semester" value="<?= $semester ?>" type="text" id="semester" class="form-control" placeholder="Semester" />
-						</div>
+						</div> -->
 						<!-- jurusan -->
 					<!-- 	<div class="form-group col-12 col-md-6">
 							<label class="form-label" for="jurusan">Jurusan</label>
@@ -402,8 +383,8 @@
 						</div> -->
 						<!-- Telepon -->
 						<div class="form-group col-12 col-md-6">
-							<label for="telpon" class="form-label" for="telpon">Telepon</label>
-							<input id="telpon" name="telpon" value="<?= $telpon ?>" type="text" id="telepon" class="form-control" placeholder="Telepon"  />
+							<label for="telpon" class="form-label" for="telpon">Telepon<font color="red">*</font></label>
+							<input id="telpon" name="telpon" value="<?= $data['telpon'] ?>" type="text" id="telepon" class="form-control" placeholder="Telepon" required  />
 						</div>
 
 						<div class="col-12">
@@ -486,13 +467,14 @@
 				<h4 class="mb-0">Alamat Email</h4>
 				<p>
 					Email anda saat ini
-					<span class="text-success"><?= $email ?></span>
+					<span class="text-success"><?= $data['email'] ?></span>
 				</p>
 				<form class="form-row" action="<?= base_url();?>admin/change_email" method="post">
 					<div class="form-group col-lg-6 col-md-12 col-12">
-						<input name="id_user" value="<?= $id_user ?>" type="text" hidden />
+						<input name="id_user" value="<?= $data['id_user'] ?>" type="text" hidden />
 						<label class="form-label" for="email">Email baru<font color="red">*</font></label>
 						<input id="email" type="email" name="email" class="form-control" placeholder="" required />
+						<?= form_error('email','<small class="text-danger">','</small>'); ?>  
 				<!-- 		<button type="submit" class="btn btn-primary mt-2">
 							Update
 						</button> -->
@@ -659,6 +641,3 @@
 
 
 
-
-
-<?php } ?>

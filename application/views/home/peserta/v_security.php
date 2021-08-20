@@ -1,121 +1,113 @@
-							<?php foreach ($data->result_array() as $key ) {
-								$foto=$key['foto'];
-								$username=$key['username'];
-								$nama_lengkap=$key['nama_lengkap'];
-								?>
-								<div class="pt-5 pb-5">
-									<div class="container">
-										<!-- User info -->
-										<div class="row align-items-center">
-											<div class="col-xl-12 col-lg-12 col-md-12 col-12">
-												<!-- Bg -->
-												<div class="pt-16 rounded-top" style="
-												background: url(<?= base_url();?>assets/images/background/profile-bg.jpg) no-repeat;
-												background-size: cover;
-												"></div>
-												<div
-												class="d-flex align-items-end justify-content-between bg-white px-4 pt-2 pb-4 rounded-none rounded-bottom shadow-sm">
-												<div class="d-flex align-items-center">
-													<div class="mr-2 position-relative d-flex justify-content-end align-items-end mt-n5">
-														<img src="<?= base_url('assets/images/users/'.$foto);?>" class="avatar-xl rounded-circle border-width-4 border-white"
-														alt="" />
-													</div>
-													<div class="lh-1">
-														<h2 class="mb-0">
-															<?= $nama_lengkap ?>
 
-														</h2>
+<div class="pt-5 pb-5">
+	<div class="container">
+		<!-- User info -->
+		<div class="row align-items-center">
+			<div class="col-xl-12 col-lg-12 col-md-12 col-12">
+				<!-- Bg -->
+				<div class="pt-16 rounded-top" style="
+				background: url(<?= base_url();?>assets/images/background/profile-bg.jpg) no-repeat;
+				background-size: cover;
+				"></div>
+				<div
+				class="d-flex align-items-end justify-content-between bg-white px-4 pt-2 pb-4 rounded-none rounded-bottom shadow-sm">
+				<div class="d-flex align-items-center">
+					<div class="mr-2 position-relative d-flex justify-content-end align-items-end mt-n5">
+						<img src="<?= base_url('assets/images/users/'.$data['foto'] );?>" class="avatar-xl rounded-circle border-width-4 border-white"
+						alt="" />
+					</div>
+					<div class="lh-1">
+						<h2 class="mb-0">
+							<?= $data['nama_lengkap']  ?>
 
-														<p class="mb-0 d-block">@<?= $username ?></p>
-													<?php } ?>
-												</div>
-											</div>
-											<div>
-												<a href="<?= base_url();?>peserta" class="btn btn-outline-primary btn-sm d-none d-md-block">Beranda</a>
-											</div>
-										</div>
-									</div>
-								</div>
-								<!-- Content -->
-								<div class="row mt-0 mt-md-4">
-									<div class="col-lg-3 col-md-4 col-12">
-										<!-- Side navbar -->
-										<nav class="navbar navbar-expand-md navbar-light shadow-sm mb-4 mb-lg-0 sidenav">
-											<!-- Menu -->
-											<a class="d-xl-none d-lg-none d-md-none text-inherit font-weight-bold" href="#!">Menu</a>
-											<!-- Button -->
-											<button class="navbar-toggler d-md-none icon-shape icon-sm rounded bg-primary text-light" type="button"
-											data-toggle="collapse" data-target="#sidenav" aria-controls="sidenav" aria-expanded="false"
-											aria-label="Toggle navigation">
-											<span class="fe fe-menu"></span>
-										</button>
-										<!-- Collapse navbar -->
-										<div class="collapse navbar-collapse" id="sidenav">
-											<div class="navbar-nav flex-column">
-												<ul class="list-unstyled ml-n2 mb-4">
-													<!-- Nav item -->
-													<span class="navbar-header">Beranda</span>
-													<li class="nav-item">
-														<a class="nav-link" href="<?= base_url();?>peserta"><i class="fe fe-home nav-icon"></i>Beranda</a>
-													</li>
-												</ul>
-												<span class="navbar-header">Pengaturan Akun</span>
-												<ul class="list-unstyled ml-n2 mb-0">
-													<!-- Nav item -->
-													<li class="nav-item">
-														<a class="nav-link" href="<?= base_url('peserta/profile'); ?>"><i class="fe fe-user nav-icon"></i>Profil</a>
-													</li>	
-													<!-- Nav item -->
-													<li class="nav-item">
-														<a class="nav-link" href="<?= base_url('peserta/edit_profile'); ?>"><i class="fe fe-settings nav-icon"></i>Ubah Profil</a>
-													</li>
-													<!-- Nav item -->
-													<li class="nav-item active">
-														<a class="nav-link" href="<?= base_url('peserta/security'); ?>"><i class="fe fe-lock nav-icon"></i>Keamanan</a>
-													</li>
-													<!-- Nav item -->
-													<li class="nav-item">
-														<a class="nav-link" href="<?= base_url('peserta/social'); ?>"><i class="fe fe-refresh-cw nav-icon"></i>Akun Sosial Media</a>
-													</li>
-													<!-- Nav item -->
-													<li class="nav-item">
-														<a class="nav-link" href="<?= base_url('auth/logout'); ?>"><i class="fe fe-power nav-icon"></i>Keluar</a>
-													</li>
-												</ul>
-											</div>
-										</div>
-									</nav>
-								</div>
-								<!-- Content -->
-								<div class="col-lg-9 col-md-8 col-12">
-									<!-- Card -->
-									<div class="card">
-										<!-- Card header -->
-										<div class="card-header">
-											<center><?php echo $this->session->tempdata('msg');?></center> 
-											<h3 class="mb-0">Keamanan</h3>
-											<p class="mb-0">
-												Ubah akun dan kata sandi anda di sini.
-											</p>
-										</div>
-										<?php foreach ($data->result_array() as $key ) {
-											$id_peserta=$key['id_peserta'];
-											$username=$key['username'];
-											$password=$key['password'];
-											$email=$key['email'];
-											?>
-											<!-- Card body -->
-											<div class="card-body">
-												<h4 class="mb-0">Alamat Email</h4>
-												<p>
-													Email anda saat ini
-													<span class="text-success"><?= $email ?></span>
-												</p>
-												<form class="form-row" action="<?= base_url();?>peserta/change_email" method="post">
-													<div class="form-group col-lg-6 col-md-12 col-12">
-														<input name="id_peserta" value="<?= $id_peserta ?>" type="text" hidden />
-														<label class="form-label" for="email">Email baru<font color="red">*</font></label>
-														<input id="email" type="email" name="email" class="form-control" placeholder="" required />
+						</h2>
+
+						<p class="mb-0 d-block">@<?= $data['username']  ?></p>
+
+					</div>
+				</div>
+				<div>
+					<a href="<?= base_url();?>peserta" class="btn btn-outline-primary btn-sm d-none d-md-block">Beranda</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Content -->
+	<div class="row mt-0 mt-md-4">
+		<div class="col-lg-3 col-md-4 col-12">
+			<!-- Side navbar -->
+			<nav class="navbar navbar-expand-md navbar-light shadow-sm mb-4 mb-lg-0 sidenav">
+				<!-- Menu -->
+				<a class="d-xl-none d-lg-none d-md-none text-inherit font-weight-bold" href="#!">Menu</a>
+				<!-- Button -->
+				<button class="navbar-toggler d-md-none icon-shape icon-sm rounded bg-primary text-light" type="button"
+				data-toggle="collapse" data-target="#sidenav" aria-controls="sidenav" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<span class="fe fe-menu"></span>
+			</button>
+			<!-- Collapse navbar -->
+			<div class="collapse navbar-collapse" id="sidenav">
+				<div class="navbar-nav flex-column">
+					<ul class="list-unstyled ml-n2 mb-4">
+						<!-- Nav item -->
+						<span class="navbar-header">Beranda</span>
+						<li class="nav-item">
+							<a class="nav-link" href="<?= base_url();?>peserta"><i class="fe fe-home nav-icon"></i>Beranda</a>
+						</li>
+					</ul>
+					<span class="navbar-header">Pengaturan Akun</span>
+					<ul class="list-unstyled ml-n2 mb-0">
+						<!-- Nav item -->
+						<li class="nav-item">
+							<a class="nav-link" href="<?= base_url('peserta/profile'); ?>"><i class="fe fe-user nav-icon"></i>Profil</a>
+						</li>	
+						<!-- Nav item -->
+						<li class="nav-item">
+							<a class="nav-link" href="<?= base_url('peserta/edit_profile'); ?>"><i class="fe fe-settings nav-icon"></i>Ubah Profil</a>
+						</li>
+						<!-- Nav item -->
+						<li class="nav-item active">
+							<a class="nav-link" href="<?= base_url('peserta/security'); ?>"><i class="fe fe-lock nav-icon"></i>Keamanan</a>
+						</li>
+						<!-- Nav item -->
+						<li class="nav-item">
+							<a class="nav-link" href="<?= base_url('peserta/social'); ?>"><i class="fe fe-refresh-cw nav-icon"></i>Akun Sosial Media</a>
+						</li>
+						<!-- Nav item -->
+						<li class="nav-item">
+							<a class="nav-link" href="<?= base_url('auth/logout'); ?>"><i class="fe fe-power nav-icon"></i>Keluar</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+	</div>
+	<!-- Content -->
+	<div class="col-lg-9 col-md-8 col-12">
+		<!-- Card -->
+		<div class="card">
+			<!-- Card header -->
+			<div class="card-header">
+				<center><?php echo $this->session->tempdata('msg');?></center> 
+				<h3 class="mb-0">Keamanan</h3>
+				<p class="mb-0">
+					Ubah akun dan kata sandi anda di sini.
+				</p>
+			</div>
+
+			<!-- Card body -->
+			<div class="card-body">
+				<h4 class="mb-0">Alamat Email</h4>
+				<p>
+					Email anda saat ini
+					<span class="text-success"><?= $data['email'] ?></span>
+				</p>
+				<form class="form-row" action="<?= base_url();?>peserta/change_email" method="post">
+					<div class="form-group col-lg-6 col-md-12 col-12">
+						<input name="id_peserta" value="<?= $data['id_peserta']  ?>" type="text" hidden />
+						<label class="form-label" for="email">Email baru<font color="red">*</font></label>
+						<input id="email" type="email" name="email" class="form-control" placeholder="" required />
+						<?= form_error('email','<small class="text-danger">','</small>'); ?>    
 													<!-- 	<button type="submit" class="btn btn-primary mt-2">
 															Update
 														</button> -->
@@ -202,7 +194,7 @@
 															</div>		
 
 
-															<?php } ?>	<!-- penutup foreach  -->
+
 
 															<!-- Button -->
 														<!-- 	<button type="submit" class="btn btn-primary">

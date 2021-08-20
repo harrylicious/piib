@@ -39,8 +39,9 @@ class Peserta extends CI_Controller {
 			$data['data_array_anggota_tim']=$this->m_peserta->get_data_anggota_tim($u_id_grub)->row_array();
 
 			$data['data_event']=$this->m_event->get_all()->result();
+			$data['data_event_mendatang']=$this->m_event->get_event_mendatang()->result();
 			$data['data_produk']=$this->m_produk->get_detail_produk($u_id_grub)->row_array();
-			
+
 			$data['data_riwayat_pengajuan_produk']=$this->m_produk->get_riwayat_pengajuan_produk($u_id_grub)->result();
 
 			$this->load->view('/templates/peserta/v_header',$data);
@@ -55,7 +56,7 @@ class Peserta extends CI_Controller {
 		if($this->session->userdata('access')=='4'){
 			$id_peserta=$this->session->userdata('u_id');
 			$data['judul']='Profil';
-			$data['data']=$this->m_peserta->get_profile($id_peserta); 
+			$data['data']=$this->m_peserta->get_profile($id_peserta)->row_array();
 			$this->load->view('/templates/peserta/v_header',$data);
 			$this->load->view('/home/peserta/v_profile',$data);
 			$this->load->view('/templates/peserta/v_footer',$data);
@@ -68,7 +69,7 @@ class Peserta extends CI_Controller {
 		if($this->session->userdata('access')=='4'){
 			$id_peserta=$this->session->userdata('u_id');
 			$data['judul']='Ubah profil';
-			$data['data']=$this->m_peserta->get_profile($id_peserta); 
+			$data['data']=$this->m_peserta->get_profile($id_peserta)->row_array();
 			$this->load->view('/templates/peserta/v_header',$data);
 			$this->load->view('/home/peserta/v_edit_profile',$data);
 			$this->load->view('/templates/peserta/v_footer',$data);
@@ -81,7 +82,7 @@ class Peserta extends CI_Controller {
 		if($this->session->userdata('access')=='4'){
 			$id_peserta=$this->session->userdata('u_id');
 			$data['judul']='Keamanan';
-			$data['data']=$this->m_peserta->get_profile($id_peserta);
+			$data['data']=$this->m_peserta->get_profile($id_peserta)->row_array();
 			$this->load->view('/templates/peserta/v_header',$data);
 			$this->load->view('/home/peserta/v_security',$data);
 			$this->load->view('/templates/peserta/v_footer',$data);
@@ -94,7 +95,7 @@ class Peserta extends CI_Controller {
 		if($this->session->userdata('access')=='4'){
 			$data['judul']='Akun sosial media';
 			$id_peserta=$this->session->userdata('u_id');
-			$data['data']=$this->m_peserta->get_profile($id_peserta);
+			$data['data']=$this->m_peserta->get_profile($id_peserta)->row_array();
 			$this->load->view('/templates/peserta/v_header',$data);
 			$this->load->view('/home/peserta/v_social',$data);
 			$this->load->view('/templates/peserta/v_footer',$data);
@@ -102,6 +103,7 @@ class Peserta extends CI_Controller {
 			$this->load->view('/maintenance/v_error_404');
 		}
 	}
+
 
 
 //====================================================> fitur

@@ -21,10 +21,10 @@ class Home extends CI_Controller {
 	{
 		$data['judul']='PIIB UNIVERSITAS HAMZANWADI'; 
 		$data['data']=$this->m_event->get_all();
-		$this->load->view('/templates/v_header', $data);
+		$this->load->view('/templates/v_header', $data); 
 		$this->load->view('/home/v_landing', $data);
 		$this->load->view('/templates/v_footer', $data);
-	}
+	} 
 
 	public function event($id_event)
 	{

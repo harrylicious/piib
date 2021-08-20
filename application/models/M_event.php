@@ -3,6 +3,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class M_event extends CI_Model {
 
+	public $view_data_event_mendatang = "data_event_mendatang";
+
 	public function __construct(){
 		parent::__construct();
 
@@ -15,7 +17,7 @@ class M_event extends CI_Model {
 		$this->db->where('status', 0);
 		$hsl=$this->db->get($tbl);
 		return $hsl;
-	}
+	} 
 
 	// ambil semua data event dengan status 0 dan berdasarkan id_event 
 	function get_event($id_event) {
@@ -24,6 +26,12 @@ class M_event extends CI_Model {
 		$this->db->where('status', 0);
 		$this->db->where($id, $id_event);
 		$hsl=$this->db->get($tbl, 1); // table dan limit 
+		return $hsl;
+	}
+
+	// ambil semua data event dengan status 0 dan berdasarkan id_event 
+	function get_event_mendatang() {
+		$hsl=$this->db->get($this->view_data_event_mendatang);
 		return $hsl;
 	}
 

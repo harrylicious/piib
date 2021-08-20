@@ -62,7 +62,7 @@
 							<li class="nav-item" role="presentation">
 								<a class="nav-link" id="inkkubasi-tab" data-toggle="pill" href="#inkubasi" role="tab" aria-controls="inkubasi"
 								aria-selected="false">
-							Event</a>
+							Agenda Event</a>
 						</li>
 					</ul>
 					<!-- Tab content -->
@@ -101,13 +101,13 @@
 															<!-- Card -->
 															<div class="card mb-3">
 																<div class="p-4">
-																	<span class="font-size-xs text-uppercase font-weight-semi-bold">Produk</span>
+																	<span class="font-size-xs text-uppercase font-weight-semi-bold">Nama Tim</span>
 																	<h2 class="mt-4 font-weight-bold mb-1 d-flex align-items-center h1 lh-1">
-																		4
+																		Farm IOT
 																	</h2>
 																	<span class="d-flex justify-content-between align-items-center">
-																		<span>Status produk</span>
-																		<span class="badge badge-success ml-2">Diterima</span>
+																		<span>Status</span>
+																		<span class="badge badge-success ml-2">Terverifikasi</span>
 																	</span>
 																</div>
 															</div>
@@ -117,13 +117,13 @@
 															<!-- Card -->
 															<div class="card mb-3">
 																<div class="p-4">
-																	<span class="font-size-xs text-uppercase font-weight-semi-bold">Jumlah Anggota Tim</span>
+																	<span class="font-size-xs text-uppercase font-weight-semi-bold">Produk</span>
 																	<h2 class="mt-4 font-weight-bold mb-1 d-flex align-items-center h1 lh-1">
-																		4
+																		Farm IOT
 																	</h2>
 																	<span class="d-flex justify-content-between align-items-center">
-																		<span>Status Tim</span>
-																		<span class="badge badge-success ml-2">Diterima</span>
+																		<span>Status</span>
+																		<span class="badge badge-warning ml-2">Menunggu Moderasi</span>
 																	</span>
 																</div>
 															</div>
@@ -167,7 +167,7 @@
 													<div class="card mb-4">
 														<!-- Card header -->
 														<div class="card-header border-bottom-0">
-															<h3 class="h4 mb-0">Daftar Kegiatan</h3>
+															<h3 class="h4 mb-0">Daftar Kegiatan Mendatang</h3>
 														</div>
 														<!-- Table -->
 														<div class="table-responsive ">
@@ -176,91 +176,34 @@
 																<thead class="thead-light">
 																	<tr>
 																		<th scope="col" class="border-bottom-0">TANGGAL</th>
-																		<th scope="col" class="border-bottom-0">KEGIATAN</th>
+																		<th scope="col" class="border-bottom-0">NAMA EVENT</th>
 																		<th scope="col" class="border-bottom-0">STATUS</th>
-																		<th scope="col" class="border-bottom-0"></th>
 																	</tr>
 																</thead>
 																<!-- Table body -->
 																<tbody>
+
+																	<?php foreach ($data_event_mendatang as $row) 
+																		{
+																	?>
 																	<tr>
 
-																		<td class="align-middle">21/08/2021</td>
+																		<td class="align-middle"><?= tgl_dan_hari(tgl_default($row->tgl_event)).", ".tgl_default($row->tgl_event).", "; ?><span class="badge badge-danger"><?= $row->hari ?> lagi</span></td>
 																		<td class="align-middle">
 																			<a href="#!">
 
 																				<h5 class="align-items-center text-primary-hover">
-																					Workshop: Belajar Flutter
+																					<?= $row->nama_event; ?>
 																				</h5>
 
 																			</a>
 																		</td>
-																		<td class="text-success align-middle">Aktif</td>
-																		<td class="text-muted align-middle">
-
-																			<a class="text-muted text-decoration-none" href="#!" role="button" id="courseDropdown1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-																				<i class="fe fe-x"></i>
-																			</a>
-
-																		</td>
+																		<td> <a class="badge badge-success p-2" href="<?= base_url('event/detail_event/'.$row->id_event); ?>">Lihat Detail</a></td>
+						
 																	</tr>
-																	<tr>
 
-																		<td class="align-middle">21/08/2021</td>
-																		<td class="align-middle">
-																			<a href="#!">
-
-																				<h5 class="align-items-center text-primary-hover">
-																					Workshop: Belajar Flutter
-																				</h5>
-
-																			</a>
-																		</td>
-																		<td class="text-danger align-middle">Tidak Aktif</td>
-																		<td class="text-muted align-middle">
-																			<a class="text-muted text-decoration-none" href="#!" role="button" id="courseDropdown1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-																				<i class="fe fe-x"></i>
-																			</a>
-																		</td>
-																	</tr>
-																	<tr>
-
-																		<td class="align-middle">21/08/2021</td>
-																		<td class="align-middle">
-																			<a href="#!">
-
-																				<h5 class="align-items-center text-primary-hover">
-																					Workshop: Belajar Flutter
-																				</h5>
-
-																			</a>
-																		</td>
-																		<td class="text-success align-middle">Aktif</td>
-																		<td class="text-muted align-middle">
-																			<a class="text-muted text-decoration-none" href="#!" role="button" id="courseDropdown1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-																				<i class="fe fe-x"></i>
-																			</a>
-																		</td>
-																	</tr>
-																	<tr>
-
-																		<td class="align-middle">21/08/2021</td>
-																		<td class="align-middle">
-																			<a href="#!">
-
-																				<h5 class="align-items-center text-primary-hover">
-																					Workshop: Belajar Flutter
-																				</h5>
-
-																			</a>
-																		</td>
-																		<td class="text-success align-middle">Aktif</td>
-																		<td class="text-muted align-middle">
-																			<a class="text-muted text-decoration-none" href="#!" role="button" id="courseDropdown1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-																				<i class="fe fe-x"></i>
-																			</a>
-																		</td>
-																	</tr>
+																	<?php } ?>
+																	
 																</tbody>
 															</table>
 														</div>
@@ -401,11 +344,11 @@
 									<div class="card mb-4">
 										<!-- Card body -->
 										<div class="p-4">
-											<span class="icon-shape icon-sm bg-light-warning text-dark-warning rounded-lg"><i class="fe fe-send"></i></span>
+											<span class="icon-shape icon-sm bg-light-warning text-dark-warning rounded-lg"><i class="fe fe-youtube"></i></span>
 											<h2 class="h1 font-weight-bold mb-0 mt-4 lh-1">
 												LINK VIDEO
 											</h2>
-											<p>Life Time Sales</p>
+											<p>Belum ada video.</p>
 											<div class="progress bg-light-warning" style="height: 2px">
 												<div class="progress-bar bg-warning" role="progressbar" style="width: 35%" aria-valuenow="35"
 													aria-valuemin="0" aria-valuemax="100"></div>
@@ -424,20 +367,22 @@
 									<table class="table mb-0 text-nowrap">
 										<thead class="thead-light">
 											<tr>
+												<th scope="col" class="border-bottom-0">TANGGAL PENGAJUAN</th>
 												<th scope="col" class="border-bottom-0">NAMA</th>
 												<th scope="col" class="border-bottom-0">DESKRIPSI</th>
-												<th scope="col" class="border-bottom-0">TANGGAL PENGAJUAN</th>
 												<th scope="col" class="border-bottom-0"></th>
 											</tr>
 										</thead>
-										<tbody><?php foreach ($data_riwayat_pengajuan_produk as $row) 
+										<tbody>
+										<?php foreach ($data_riwayat_pengajuan_produk as $row) 
 											{
 										?>
 
 											<tr>
+												<td class="align-middle"><?= tgl_dan_hari(tgl_default($row->created_at)).", ".tgl_default($row->created_at); ?></td>
 												<td class="align-middle">
 													<a href="#!">
-														<div class="d-lg-flex align-items-center">
+														<div class="d-lg-flex">
 															<h5 class="mb-0 ml-lg-3 mt-lg-0 mt-2 text-primary-hover">
 																<?= $row->nama; ?>
 															</h5>
@@ -445,7 +390,6 @@
 													</a>
 												</td>
 												<td class="align-middle"><?= $row->deskripsi; ?></td>
-												<td class="align-middle"><?= tgl_dan_hari(tgl_default($row->created_at)).", ".tgl_default($row->created_at); ?></td>
 												<td class="text-muted align-middle">
 													<span class="dropdown">
 														<a class="text-muted text-decoration-none" href="#!" role="button" id="courseDropdown1"
