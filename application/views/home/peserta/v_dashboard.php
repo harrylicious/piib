@@ -499,100 +499,34 @@
 												<table class="table">
 													<thead class="thead-light">
 														<tr>
-															<th scope="col" class="border-bottom-0">Name</th>
-															<th scope="col" class="border-bottom-0">Enrolled</th>
-															<th scope="col" class="border-bottom-0">Progress</th>
-															<th scope="col" class="border-bottom-0">Q/A</th>
-															<th scope="col" class="border-bottom-0">Locations</th>
-															<th scope="col" class="border-bottom-0">Message</th>
+															<th scope="col" class="border-bottom-0">Nama</th>
+															<th scope="col" class="border-bottom-0">Terdaftar</th>
+															<th scope="col" class="border-bottom-0">Telpon</th>
+															<th scope="col" class="border-bottom-0">Alamat</th>
+															<th scope="col" class="border-bottom-0">Aksi</th>
 														</tr>
 													</thead>
 													<tbody>
+													<?php foreach ($data_anggota_tim as $row) 
+													{
+														?>
 														<tr>
 															<td class="align-middle">
 																<div class="d-flex align-items-center">
-																	<img src="../assets/images/avatar/avatar-3.jpg" alt="" class="rounded-circle avatar-md mr-2" />
-																	<h5 class="mb-0">Guy Hawkins</h5>
+																	<img src="<?= base_url('assets/images/users/').$row->foto; ?>" alt="" class="rounded-circle avatar-md mr-2" />
+																	<h5 class="mb-0"><?= $row->nama_lengkap; ?></h5>
 																</div>
 															</td>
-															<td class="align-middle">3/12/2020</td>
-															<td class="align-middle">0%</td>
-															<td class="align-middle">0</td>
+															<td class="align-middle"><?= $row->created_at; ?></td>
+															<td class="align-middle"><?= $row->telpon; ?></td>
 															<td class="align-middle">
-																<span class="font-size-xs"><i class="fe fe-map-pin mr-1"></i>Greece</span>
+																<span class="font-size-xs"><i class="fe fe-map-pin mr-1"></i><?= $row->alamat; ?></span>
 															</td>
 															<td class="pr-0 align-middle">
-																<a href="#!" class="btn btn-outline-white btn-sm">Message</a>
+																<a href="#!" class="btn btn-outline-white btn-sm">Lihat Profil</a>
 															</td>
 														</tr>
-														<tr>
-															<td class="align-middle">
-																<div class="d-flex align-items-center">
-																	<img src="../assets/images/avatar/avatar-2.jpg" alt="" class="rounded-circle avatar-md mr-2" />
-																	<h5 class="mb-0">Dianna Smiley</h5>
-																</div>
-															</td>
-															<td class="align-middle">3/11/2020</td>
-															<td class="align-middle">12%</td>
-															<td class="align-middle">2</td>
-															<td class="align-middle">
-																<span class="font-size-xs"><i class="fe fe-map-pin mr-1"></i>India</span>
-															</td>
-															<td class="pr-0 align-middle">
-																<a href="#!" class="btn btn-outline-white btn-sm">Message</a>
-															</td>
-														</tr>
-														<tr>
-															<td class="align-middle">
-																<div class="d-flex align-items-center">
-																	<img src="../assets/images/avatar/avatar-5.jpg" alt="" class="rounded-circle avatar-md mr-2" />
-																	<h5 class="mb-0">Guy Hawkins</h5>
-																</div>
-															</td>
-															<td class="align-middle">3/11/2020</td>
-															<td class="align-middle">34%</td>
-															<td class="align-middle">4</td>
-															<td class="align-middle">
-																<span class="font-size-xs"><i class="fe fe-map-pin mr-1"></i>Brazil</span>
-															</td>
-															<td class="pr-0 align-middle">
-																<a href="#!" class="btn btn-outline-white btn-sm">Message</a>
-															</td>
-														</tr>
-														<tr>
-															<td class="align-middle">
-																<div class="d-flex align-items-center">
-																	<img src="../assets/images/avatar/avatar-10.jpg" alt="" class="rounded-circle avatar-md mr-2" />
-																	<h5 class="mb-0">Jacob Jones</h5>
-																</div>
-															</td>
-															<td class="align-middle">3/12/2020</td>
-															<td class="align-middle">44%</td>
-															<td class="align-middle">5</td>
-															<td class="align-middle">
-																<span class="font-size-xs"><i class="fe fe-map-pin mr-1"></i>Chile</span>
-															</td>
-															<td class="pr-0 align-middle">
-																<a href="#!" class="btn btn-outline-white btn-sm">Message</a>
-															</td>
-														</tr>
-														<tr>
-															<td class="align-middle">
-																<div class="d-flex align-items-center">
-																	<img src="../assets/images/avatar/avatar-8.jpg" alt="" class="rounded-circle avatar-md mr-2" />
-																	<h5 class="mb-0">Kristin Watson</h5>
-																</div>
-															</td>
-															<td class="align-middle">18/12/2020</td>
-															<td class="align-middle">45%</td>
-															<td class="align-middle">9</td>
-															<td class="align-middle">
-																<span class="font-size-xs"><i class="fe fe-map-pin mr-1"></i>Estonia</span>
-															</td>
-															<td class="pr-0 align-middle">
-																<a href="#!" class="btn btn-outline-white btn-sm">Message</a>
-															</td>
-														</tr>
+														<?php } ?>
 													</tbody>
 												</table>
 											</div>
