@@ -6,6 +6,7 @@ class M_produk extends CI_Model {
 	public $id = "id_produk";
 	public $id_grub = "id_grub";
 	public $view_data_produk_grub = "data_detail_produk_pergrub";
+	public $view_data_riwayat_pengajuan_produk = "data_riwayat_pengajuan_produk";
 
 	public function __construct(){
 		parent::__construct();
@@ -80,6 +81,12 @@ class M_produk extends CI_Model {
 	 function get_detail_produk($u_id_grub) {
 		$this->db->where("id_grub", $u_id_grub);
 		return $this->db->get($this->view_data_produk_grub);
+	}
+
+	 // menampilkan detail data pada table produk dengan status 0 (ada)
+	 function get_riwayat_pengajuan_produk($u_id_grub) {
+		$this->db->where("id_grub", $u_id_grub);
+		return $this->db->get($this->view_data_riwayat_pengajuan_produk);
 	}
 
 
