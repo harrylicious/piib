@@ -40,6 +40,8 @@ class Peserta extends CI_Controller {
 
 			$data['data_event']=$this->m_event->get_all()->result();
 			$data['data_produk']=$this->m_produk->get_detail_produk($u_id_grub)->row_array();
+			
+			$data['data_riwayat_pengajuan_produk']=$this->m_produk->get_riwayat_pengajuan_produk($u_id_grub)->result();
 
 			$this->load->view('/templates/peserta/v_header',$data);
 			$this->load->view('/home/peserta/v_dashboard',$data);
